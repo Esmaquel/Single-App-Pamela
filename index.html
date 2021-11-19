@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       <!-- jquery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <!-- font awesome script tag -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.min.js" integrity="sha512-cyAbuGborsD25bhT/uz++wPqrh5cqPh1ULJz4NSpN9ktWcA6Hnh9g+CWKeNx2R0fgQt+ybRXdabSBgYXkQTTmA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <!-- font awesome css tag -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Single Page App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">
+      <span class="fa fa-search"></span>
+    </span>
+  </div>
+  <input autofocus placeholder="search" class="form-control" type="text" autocomplete="off" name="search" id="search" />
+</div>
+<ul class="list-group" id="list"></ul>
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="./img/logo-fish-01.png">
+      </a>
+
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">recipe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><span>special</span></a>
+          </li>
+        </ul>
+
+      </div>
+  </div>
+  </nav>
+
+
+<section class="banner-text">
+  <h1>Fresh From The Sea - <span>Free Recipe</span> </h1>
+  <div id="cardContent" class="cardContent">
+  </div>
+</section>
+
+
+    <!-- start of modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Free Recipe</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div id="objectArrayModalInfo" class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <download class="btn btn-primary" get-data="modal">Download</download>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- end of modal -->
+
+
+    <div class="container">
+      <form id="signup" class="form">
+          <h1>Create Account</h1>
+          <div class="form-field">
+              <label for="username">Username:</label>
+              <input type="text" name="username" id="username" autocomplete="off">
+              <small></small>
+          </div>
+
+          <div class="form-field">
+              <label for="email">Email:</label>
+              <input type="text" name="email" id="email" autocomplete="off">
+              <small></small>
+          </div>
+
+          <div class="form-field">
+              <label for="password">Password:</label>
+              <input type="password" name="password" id="password" autocomplete="off">
+              <small></small>
+          </div>
+
+
+          <div class="form-field">
+              <label for="confirm-password">Confirm Password:</label>
+              <input type="password" name="confirm-password" id="confirm-password" autocomplete="off">
+              <small></small>
+          </div>
+
+          <div class="form-field">
+              <input class="sign-upGroup" type="submit" value="Sign Up">
+          </div>
+      </form>
+  </div>
+
+
+
+<div class="findSearch">
+<h2>search your favourite seafood</h2>
+
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn" onclick="filterSelection('fish')"> Whole Fish</button>
+  <button class="btn" onclick="filterSelection('shell fish')">Shell Fish</button>
+  <button class="btn" onclick="filterSelection('steak')">Steak</button>
+  <button class="btn" onclick="filterSelection('smoked')">Smoked Fish</button>
+  <button class="btn" onclick="filterSelection('fillet')">Fillet</button>
+</div>
+
+<div class="container">
+  <div class="filterSeafood fish">Fish</div>
+  <div class="filterSeafood shell fish">Scallop</div>
+  <div class="filterSeafood whole-fish">Trevally</div>
+  <div class="filterSeafood fillet">Tarakihi</div>
+  <div class="filterSeafood smoked">Salmon</div>
+  <div class="filterSeafood fillet">Snapper</div>
+  <div class="filterSeafood shell fish">Clams</div>
+  <div class="filterSeafood bone-in">Hoki</div>
+  <div class="filterSeafood shell fish">Oyster</div>
+  <div class="filterSeafood shell fish">Mussel</div>
+  <div class="filterSeafood fillet">Orange Roughy</div>
+  <div class="filterSeafood smoked">Kawhwai</div>
+  <div class="filterSeafood steak">Steak-Tuna</div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+
+  <!-- Footer Elements -->
+  <div class="container-footer">
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a class="btn-floating btn-fb mx-1">
+          <i class="fab fa-facebook-f"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-tw mx-1">
+          <i class="fab fa-twitter"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-gplus mx-1">
+          <i class="fab fa-google-plus-g"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-li mx-1">
+          <i class="fab fa-linkedin-in"> </i>
+        </a>
+      </li>
+
+    </ul>
+    <!-- Social buttons -->
+
+  </div>
+  <!-- Footer Elements -->
+<div class="container-footerSign">
+  <!-- Call to action -->
+  <ul class="list-unstyled list-inline text-center py-2">
+    <li class="list-inline-item">
+      <h5 class="mb-1">register for free</h5>
+    </li>
+    <li class="list-inline-item">
+      <a href="#!" class="btn btn-outline-white btn-rounded" id="signUp">Sign up!</a>
+    </li>
+  </ul>
+  <!-- Call to action -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
